@@ -1,0 +1,5 @@
+.venv/
+scripts/preview/
+__pycache__/
+*.pyc
+Thumbs.db
