@@ -1161,7 +1161,7 @@ section h2 span {
   }
 
   .nav__links {
-    position: fixed;
+    position: absolute;
     top: 100%;
     left: 0;
     right: 0;
