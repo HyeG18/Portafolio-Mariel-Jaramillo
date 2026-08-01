@@ -1152,6 +1152,10 @@ section h2 span {
 }
 
 @media (max-width: 859px) {
+  .nav {
+    padding: 0.9rem 1rem;
+  }
+
   .nav__links {
     position: fixed;
     top: 100%;
@@ -1202,25 +1206,16 @@ section h2 span {
   .contact__card {
     transform: none;
     padding: 1rem 0.8rem;
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
-    width: calc(100% + 1rem);
-    max-width: none;
   }
 
   .contact__item {
     font-size: 0.85rem;
     padding: 0.5rem 0.5rem;
-    margin-left: -0.3rem;
   }
 
   .contact__item svg {
     width: 20px;
     height: 20px;
-  }
-
-  .nav__actions {
-    margin-right: -0.5rem;
   }
 }
 
