@@ -1198,6 +1198,23 @@ section h2 span {
   .metrics__hand {
     display: none;
   }
+
+  .contact__card {
+    transform: none;
+    padding: 1.2rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+
+  .contact__item {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.5rem;
+    margin-left: -0.3rem;
+  }
+
+  .nav__actions {
+    margin-right: -0.5rem;
+  }
 }
 
 /* ---------- Accesibilidad ---------- */
