@@ -1135,6 +1135,10 @@ section h2 span {
   .hero__photo-wrap {
     width: min(280px, 70vw);
   }
+
+  .metrics__cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (min-width: 860px) {
