@@ -1050,7 +1050,11 @@ section h2 span {
   padding: 0.55rem 0.7rem;
   border-radius: 0.7rem;
   transition: var(--transition);
-  word-break: break-all;
+}
+
+.contact__item span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .contact__item svg {
@@ -1206,16 +1210,36 @@ section h2 span {
   .contact__card {
     transform: none;
     padding: 1rem 0.8rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .contact__item {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     padding: 0.5rem 0.5rem;
+    gap: 0.6rem;
   }
 
   .contact__item svg {
     width: 20px;
     height: 20px;
+  }
+
+  .contact h2 {
+    font-size: clamp(1.4rem, 6vw, 1.9rem);
+    overflow-wrap: break-word;
+  }
+
+  .contact h2 span {
+    padding: 0 0.2em;
+  }
+
+  .contact__subtitle {
+    font-size: 1.3rem;
+  }
+
+  .contact__photo img {
+    max-width: 100%;
   }
 }
 
