@@ -12,11 +12,13 @@ document.addEventListener("DOMContentLoaded", () => {
   burger.addEventListener("click", () => {
     burger.classList.toggle("open");
     links.classList.toggle("open");
+    document.body.classList.toggle("menu-open");
   });
   links.querySelectorAll("a").forEach((a) =>
     a.addEventListener("click", () => {
       burger.classList.remove("open");
       links.classList.remove("open");
+      document.body.classList.remove("menu-open");
     })
   );
 

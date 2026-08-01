@@ -33,6 +33,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  overflow-x: hidden;
 }
 
 body {
@@ -223,6 +224,7 @@ section h2 span {
     linear-gradient(rgba(232, 115, 168, 0.55), rgba(232, 115, 168, 0.55)),
     url("../assets/images/texture-pink.webp") center/cover;
   position: relative;
+  overflow: hidden;
 }
 
 .hero__inner {
@@ -1174,6 +1176,12 @@ section h2 span {
     opacity: 0;
     pointer-events: none;
     transition: var(--transition);
+    max-height: calc(100dvh - 4rem);
+    overflow-y: auto;
+  }
+
+  body.menu-open {
+    overflow: hidden;
   }
 
   .nav__links.open {
