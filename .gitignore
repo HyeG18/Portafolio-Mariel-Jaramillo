@@ -1,5 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
 .venv/
-scripts/preview/
 __pycache__/
 *.pyc
-Thumbs.db
+scripts/preview/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ESLint
+.eslintcache
+
+# Superpowers SDD workspace
+.superpowers/

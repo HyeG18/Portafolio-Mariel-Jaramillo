@@ -1,0 +1,357 @@
+@import "tailwindcss";
+
+@theme {
+  --color-magenta-dark: #7d1348;
+  --color-magenta: #b3125a;
+  --color-magenta-hot: #d61c60;
+  --color-pink: #e873a8;
+  --color-pink-soft: #f2d0d9;
+  --color-pink-light: #feeff4;
+  --color-lime: #cfd79b;
+  --color-lime-dark: #b8c47a;
+  --color-cream: #e0dfd7;
+  --color-paper: #f7f3ea;
+  --color-ink: #3d0a24;
+
+  --font-family-body: "Poppins", sans-serif;
+  --font-family-serif: "Libre Baskerville", serif;
+
+  --radius-lg: 1.25rem;
+  --shadow-card: 0 10px 30px rgba(125, 19, 72, 0.18);
+  --transition-base: 0.3s ease;
+}
+
+/* ============================================================
+   Base resets — preserved from original styles.css
+   ============================================================ */
+
+@layer base {
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============================================================
+   Keyframes — preserved from original styles.css
+   ============================================================ */
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   Reveal animation — used by useRevealOnScroll hook
+   ============================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Hero — title em color + ghost CTA button
+   ============================================================ */
+
+.hero-title-text em {
+  color: var(--color-lime);
+  font-style: normal;
+}
+
+.hero-cta-ghost {
+  background: transparent;
+  color: var(--color-magenta-dark);
+  border: 2px solid var(--color-magenta-dark);
+  transition: var(--transition-base);
+}
+
+.hero-cta-ghost:hover {
+  background: var(--color-magenta-dark);
+  color: var(--color-pink-light);
+}
+
+.hero-cta-primary {
+  background: var(--color-magenta-dark);
+  color: white;
+  padding: 0.85rem 2.2rem;
+  transition: var(--transition-base);
+}
+
+.hero-cta-primary:hover {
+  background: var(--color-magenta-hot);
+}
+
+.hero-cta-ghost {
+  background: transparent;
+  color: var(--color-magenta-dark);
+  border: 2px solid var(--color-magenta-dark);
+  padding: 0.85rem 2.2rem;
+  transition: var(--transition-base);
+}
+
+/* ============================================================
+   Menu lock — used by Nav component
+   ============================================================ */
+
+body.menu-open {
+  overflow: hidden;
+}
+
+/* ============================================================
+   Nav — language switcher button style
+   ============================================================ */
+
+.nav__lang button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+}
+
+/* ============================================================
+   Contact section styles
+   ============================================================ */
+
+.contact__info h2 em {
+  color: var(--color-magenta-dark);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ============================================================
+   Packages section texture
+   ============================================================ */
+
+@layer components {
+  .packages {
+    background-color: var(--color-cream);
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(200,180,160,0.15) 40px, rgba(200,180,160,0.15) 41px),
+      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(200,180,160,0.15) 40px, rgba(200,180,160,0.15) 41px);
+  }
+
+/* ============================================================
+   Packages — textured background per card (not per section)
+   ============================================================ */
+
+  .package-card {
+    background:
+      linear-gradient(rgba(254,239,244,0.92), rgba(254,239,244,0.92)),
+      repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(232,115,168,0.35) 24px, rgba(232,115,168,0.35) 25px),
+      repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(232,115,168,0.35) 24px, rgba(232,115,168,0.35) 25px);
+  }
+
+  .package-card[data-popular="true"] {
+    background:
+      linear-gradient(rgba(207,215,155,0.35), rgba(207,215,155,0.35)),
+      linear-gradient(rgba(254,239,244,0.92), rgba(254,239,244,0.92)),
+      repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(232,115,168,0.35) 24px, rgba(232,115,168,0.35) 25px),
+      repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(232,115,168,0.35) 24px, rgba(232,115,168,0.35) 25px);
+  }
+
+  .reel {
+    position: relative;
+  }
+
+  .reel::after {
+    content: '▶';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .reel:hover::after {
+    opacity: 1;
+  }
+
+  .metrics__bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 1s ease-out;
+    width: 0;
+  }
+
+  .metrics__bar-fill.in-view {
+    width: calc(var(--pct) * 1%);
+  }
+
+  .metrics__bar-label {
+    font-weight: 700;
+    color: var(--color-magenta-dark);
+  }
+
+  .metrics__bar-value {
+    font-weight: 800;
+    color: var(--color-magenta-dark);
+    text-align: right;
+  }
+
+  .metrics__bar-track {
+    height: 12px;
+    background: var(--color-pink-soft);
+    border-radius: 999px;
+  }
+
+  .metrics__bar-fill--women {
+    background: var(--color-lime);
+  }
+
+  .metrics__bar-fill--men {
+    background: var(--color-pink);
+  }
+
+/* ============================================================
+   Metrics — small sub-label inside card title
+   ============================================================ */
+
+  .metrics-card-title small {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-magenta);
+  }
+
+  .package__badge {
+    position: absolute;
+    top: -14px;
+    right: 18px;
+  }
+}
+
+/* ============================================================
+   prefers-reduced-motion — preserve a11y from original
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .metrics__bar-fill {
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+/* ============================================================
+   Contact card
+   ============================================================ */
+
+.contact__card {
+  background: var(--color-paper);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem;
+  transition: transform 0.3s ease;
+}
+
+.contact__card:hover {
+  transform: rotate(-1deg) scale(1.02);
+}
+
+/* ============================================================
+   Contact — link row hover
+   ============================================================ */
+
+.contact-item {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-item:hover {
+  background: var(--color-pink-soft);
+  transform: translateX(6px);
+}
+
+/* ============================================================
+   Skills — em color overrides inside card titles
+   ============================================================ */
+
+.skills-card-dark-title em {
+  color: var(--color-lime);
+  font-style: normal;
+}
+
+.skills-card-light-title em {
+  color: var(--color-magenta-hot);
+  font-style: normal;
+}
+
+/* ============================================================
+   ContentReels — niche title em color
+   ============================================================ */
+
+.niche-title em {
+  color: var(--color-pink);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ============================================================
+   Brands — em color for "confiaron en mí"
+   ============================================================ */
+
+.brands h2 em {
+  color: var(--color-magenta-hot);
+  font-style: normal;
+}
+
+/* ============================================================
+   ContentReels — em color for "contenido"
+   ============================================================ */
+
+.videos-title em {
+  color: var(--color-lime);
+  font-style: normal;
+}
