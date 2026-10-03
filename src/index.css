@@ -411,6 +411,19 @@ body.menu-open {
 }
 
 /* ============================================================
+   Contact — link row hover
+   ============================================================ */
+
+.contact-item {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-item:hover {
+  background: var(--pink-soft);
+  transform: translateX(6px);
+}
+
+/* ============================================================
    Skills — em color overrides inside card titles
    ============================================================ */
 

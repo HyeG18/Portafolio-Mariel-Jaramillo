@@ -19,56 +19,62 @@ export default function Contact() {
       ref={ref}
       className="reveal py-20 px-4"
       style={{
-        backgroundImage: `linear-gradient(135deg, rgba(254,228,236,0.6), rgba(254,228,236,0.3)), url('${assetUrl('assets/images/texture-pink.webp')}')`,
+        backgroundImage: `linear-gradient(rgba(232,115,168,0.7), rgba(232,115,168,0.7)), url('${assetUrl('assets/images/texture-pink.webp')}')`,
         backgroundSize: 'cover',
       }}
     >
       <div className="max-w-4xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="contact__photo reveal">
+        <div className="grid grid-cols-1 min-[860px]:grid-cols-[1fr_1.4fr] gap-12 items-center">
+          <div className="contact__photo reveal flex justify-center">
             <img
               src={assetUrl('assets/images/mariel-contact.webp')}
               alt="Mariel Jaramillo con micrófono"
               className="rounded-2xl"
+              style={{
+                maxWidth: '400px',
+                width: '100%',
+                filter: 'drop-shadow(0 12px 24px rgba(61,10,36,0.35))',
+              }}
             />
           </div>
           <div className="contact__info reveal">
             <h2
               className="text-3xl md:text-4xl font-bold mb-4"
-              style={{ fontFamily: 'var(--font-family-serif)', color: 'var(--color-ink)' }}
+              style={{ fontFamily: 'var(--font-family-serif)', color: '#fff' }}
               dangerouslySetInnerHTML={{ __html: t('contact.title' as any) }}
             />
-            <p className="contact__subtitle mb-8" style={{ color: 'var(--color-magenta)' }}>
+            <p className="contact__subtitle mb-8 font-bold" style={{ color: 'var(--color-magenta-dark)', fontSize: '1.6rem' }}>
               {t('contact.subtitle' as any)}
             </p>
             <div
-              className="contact__card"
+              className="contact__card flex flex-col"
               style={{
                 transform: 'rotate(-1deg)',
                 backgroundColor: 'var(--paper)',
                 boxShadow: 'var(--shadow-card)',
                 borderRadius: '1rem',
                 padding: '1.5rem',
+                gap: '0.6rem',
               }}
             >
               <a
                 href="https://wa.me/584249406129"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 mb-4 text-sm"
-                style={{ color: 'var(--color-magenta)' }}
+                className="contact-item flex items-center gap-3 text-sm font-semibold"
+                style={{ color: 'var(--color-magenta-dark)', padding: '0.55rem 0.7rem', borderRadius: '0.7rem' }}
               >
-                <svg viewBox="0 0 24 24" className="w-5 h-5 flex-shrink-0" fill="currentColor" aria-hidden="true">
+                <svg viewBox="0 0 24 24" className="w-6 h-6 flex-shrink-0" fill="currentColor" aria-hidden="true">
                   <path d={WHATSAPP_PATH} />
                 </svg>
                 <span>{t('contact.phone' as any)}</span>
               </a>
               <a
                 href="mailto:collabsmarielj26@gmail.com"
-                className="flex items-center gap-3 mb-4 text-sm"
-                style={{ color: 'var(--color-magenta)' }}
+                className="contact-item flex items-center gap-3 text-sm font-semibold"
+                style={{ color: 'var(--color-magenta-dark)', padding: '0.55rem 0.7rem', borderRadius: '0.7rem' }}
               >
-                <svg viewBox="0 0 24 24" className="w-5 h-5 flex-shrink-0" fill="currentColor" aria-hidden="true">
+                <svg viewBox="0 0 24 24" className="w-6 h-6 flex-shrink-0" fill="currentColor" aria-hidden="true">
                   <path d={EMAIL_PATH} />
                 </svg>
                 <span>{t('contact.email' as any)}</span>
@@ -77,10 +83,10 @@ export default function Contact() {
                 href="https://www.instagram.com/soymarielitaaa"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 mb-4 text-sm"
-                style={{ color: 'var(--color-magenta)' }}
+                className="contact-item flex items-center gap-3 text-sm font-semibold"
+                style={{ color: 'var(--color-magenta-dark)', padding: '0.55rem 0.7rem', borderRadius: '0.7rem' }}
               >
-                <svg viewBox="0 0 24 24" className="w-5 h-5 flex-shrink-0" fill="currentColor" aria-hidden="true">
+                <svg viewBox="0 0 24 24" className="w-6 h-6 flex-shrink-0" fill="currentColor" aria-hidden="true">
                   <path d={INSTAGRAM_PATH} />
                 </svg>
                 <span>@soymarielitaaa</span>
@@ -89,10 +95,10 @@ export default function Contact() {
                 href="https://www.tiktok.com/@soymarielitaaa"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm"
-                style={{ color: 'var(--color-magenta)' }}
+                className="contact-item flex items-center gap-3 text-sm font-semibold"
+                style={{ color: 'var(--color-magenta-dark)', padding: '0.55rem 0.7rem', borderRadius: '0.7rem' }}
               >
-                <svg viewBox="0 0 24 24" className="w-5 h-5 flex-shrink-0" fill="currentColor" aria-hidden="true">
+                <svg viewBox="0 0 24 24" className="w-6 h-6 flex-shrink-0" fill="currentColor" aria-hidden="true">
                   <path d={TIKTOK_PATH} />
                 </svg>
                 <span>@soymarielitaaa</span>
