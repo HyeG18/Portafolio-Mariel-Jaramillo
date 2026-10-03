@@ -60,31 +60,45 @@ export default function ContentReels() {
           dangerouslySetInnerHTML={{ __html: t('videos.title' as any) }}
         />
 
-        <div className="flex justify-center gap-6 flex-wrap mb-12" style={{ color: 'var(--color-pink-light)' }}>
+        <div className="flex justify-center gap-4 flex-wrap mb-12">
           {FORMATS.map((format) => (
-            <span key={format}>{t(`videos.formats.${format}` as any)}</span>
+            <span
+              key={format}
+              className="font-bold text-sm"
+              style={{
+                backgroundColor: 'var(--color-pink)',
+                color: 'var(--color-magenta-dark)',
+                padding: '0.5rem 1.4rem',
+                borderRadius: '999px',
+              }}
+            >
+              {t(`videos.formats.${format}` as any)}
+            </span>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+        <div className="flex flex-col gap-16 max-w-[1100px] mx-auto">
           {NICHE_ORDER.map((niche) => {
-            const isPets = niche === 'pets';
+            const reels = REELS[niche];
+            const isSingle = reels.length === 1;
             return (
-              <article
-                key={niche}
-                className={`niche ${isPets ? 'col-span-2' : ''}`}
-              >
+              <article key={niche} className="niche text-center">
                 <h3
-                  className="text-xl md:text-2xl font-bold mb-6 text-center"
-                  style={{ fontFamily: 'var(--font-family-serif)', color: 'var(--color-pink-light)' }}
+                  className="niche-title text-xl md:text-2xl font-bold mb-6"
+                  style={{ fontFamily: 'var(--font-family-serif)', color: 'white' }}
                   dangerouslySetInnerHTML={{ __html: t(`videos.niche.${niche}` as any) }}
                 />
-                <div className="grid grid-cols-2 gap-4">
-                  {REELS[niche].map(({ url, thumb, alt }) => (
+                <div className="grid grid-cols-2 gap-20 max-w-[600px] mx-auto">
+                  {reels.map(({ url, thumb, alt }) => (
                     <div
                       key={url}
-                      className="reel relative aspect-[9/16] rounded-2xl overflow-hidden cursor-pointer"
-                      style={{ backgroundColor: 'var(--color-ink)' }}
+                      className={`reel relative aspect-[9/16] overflow-hidden cursor-pointer mx-auto ${isSingle ? 'col-span-2' : ''}`}
+                      style={{
+                        borderRadius: 'var(--radius-lg)',
+                        border: '3px solid var(--color-pink)',
+                        backgroundColor: 'var(--color-ink)',
+                        maxWidth: isSingle ? '320px' : '280px',
+                      }}
                       onClick={() => handleReelClick(niche, url)}
                       role="button"
                       tabIndex={0}

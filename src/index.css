@@ -393,3 +393,13 @@ body.menu-open {
   color: var(--magenta-hot);
   font-style: normal;
 }
+
+/* ============================================================
+   ContentReels — niche title em color
+   ============================================================ */
+
+.niche-title em {
+  color: var(--pink);
+  font-style: normal;
+  font-weight: 700;
+}
