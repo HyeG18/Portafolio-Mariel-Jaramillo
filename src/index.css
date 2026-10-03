@@ -110,35 +110,8 @@ body.menu-open {
 }
 
 /* ============================================================
-   Nav component styles
+   Nav — language switcher button style
    ============================================================ */
-
-.nav__links {
-  display: flex;
-  gap: 1.4rem;
-}
-
-.nav__links a {
-  color: var(--ink);
-  text-decoration: none;
-  font-size: 0.92rem;
-}
-
-.nav__links a:hover {
-  color: var(--magenta-hot);
-}
-
-.nav__burger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.nav__burger span {
-  width: 24px;
-  height: 3px;
-  background: var(--magenta-dark);
-}
 
 .nav__lang button {
   background: none;
@@ -293,106 +266,6 @@ body.menu-open {
   .metrics__bar-fill {
     transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-}
-
-/* ============================================================
-   Mobile nav — breakpoint 859px
-   ============================================================ */
-
-@media (max-width: 859px) {
-  .nav__links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: rgba(254, 239, 244, 0.95);
-    backdrop-filter: blur(12px);
-    flex-direction: column;
-    gap: 0;
-    padding: 0;
-    transform: translateY(-120%);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-
-  .nav__links.open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .nav__burger {
-    display: flex;
-  }
-
-  .nav__burger.open span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .nav__burger.open span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .nav__burger.open span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-}
-
-/* ============================================================
-   Hero text alignment (desktop)
-   ============================================================ */
-
-.hero__right .hero__kicker,
-.hero__right .hero__title,
-.hero__right .hero__tagline,
-.hero__right .hero__ctas {
-  text-align: left;
-}
-
-.hero__right .hero__ctas {
-  justify-content: flex-start;
-}
-
-.hero__kicker {
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-}
-
-.hero__title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
-  color: #fff;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.15);
-}
-
-.hero__tagline-top {
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
-  font-weight: 800;
-  color: var(--magenta-dark);
-}
-
-.hero__tagline-mid em {
-  display: inline-block;
-  font-style: normal;
-}
-
-.hero__tagline-bottom {
-  font-weight: 700;
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-}
-
-.hero__camera {
-  width: 70px;
-  display: block;
-  margin: 1rem auto;
-}
-
-.hero__handle {
-  display: block;
-  text-align: center;
-  font-family: var(--font-family-body);
 }
 
 /* ============================================================
