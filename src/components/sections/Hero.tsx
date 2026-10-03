@@ -16,8 +16,8 @@ export default function Hero() {
       <div className="max-w-6xl w-full flex flex-col md:flex-row md:items-center md:justify-center gap-10 md:gap-[10rem]">
 
         {/* Left: Photo + decorations */}
-        <div className="flex flex-col items-center relative">
-          {/* Starburst image behind photo */}
+        <div className="flex flex-col items-center relative" style={{ width: 'min(320px, 35vw)' }}>
+          {/* Starburst image (behind photo, now sized relative to an explicitly-widthed wrapper) */}
           <img
             src={assetUrl('assets/images/starburst-glitter.webp')}
             alt=""
@@ -28,43 +28,39 @@ export default function Hero() {
               width: '136%',
               top: '-18%',
               left: '-18%',
-              animation: 'spin-slow 20s linear infinite',
+              animation: 'spin-slow 40s linear infinite',
+              zIndex: 0,
             }}
           />
 
-          {/* Circular text SVG */}
+          {/* Circular spinning badge — small corner accent, NOT a halo around the whole photo */}
           <svg
             className="absolute pointer-events-none"
             viewBox="0 0 200 200"
             aria-hidden="true"
             style={{
-              width: '110%',
-              top: '-5%',
-              left: '-5%',
-              animation: 'spin-slow 20s linear infinite',
+              width: '42%',
+              top: '-14%',
+              right: '-16%',
+              animation: 'spin-slow 18s linear infinite',
+              zIndex: 3,
             }}
           >
             <defs>
               <path id="hc" d="M100,100 m-75,0 a75,75 0 1,1 150,0 a75,75 0 1,1 -150,0" />
             </defs>
-            <text fontSize="14" fontFamily="Poppins" fontWeight="800" fill="white" letterSpacing="2">
+            <text fontSize="28" fontFamily="Poppins" fontWeight="700" fill="white" letterSpacing="0.12em">
               <textPath href="#hc" startOffset="0%">
-                CONECTEMOS • CREEMOS JUNTOS • CONECTEMOS • CREEMOS JUNTOS • CONECTEMOS • CREEMOS JUNTOS • CONECTEMOS • CREEMOS JUNTOS •
-              </textPath>
-            </text>
-            <text fontSize="13" fontFamily="Poppins" fontWeight="600" fill="white" letterSpacing="1">
-              <textPath href="#hc" startOffset="50%">
-                @soymarielitaaa @soymarielitaaa @soymarielitaaa @soymarielitaaa @soymarielitaaa @soymarielitaaa @soymarielitaaa @soymarielitaaa
+                {t('hero.circular' as any)}
               </textPath>
             </text>
           </svg>
 
-          {/* Photo wrapper */}
+          {/* Photo — kept as rounded rectangle, NOT circular (explicit design decision) */}
           <div
-            className="relative overflow-hidden"
+            className="relative overflow-hidden w-full"
             style={{
-              width: '280px',
-              height: '340px',
+              aspectRatio: '280 / 340',
               borderRadius: '1.25rem',
               border: '6px solid var(--color-pink)',
               boxShadow: '0 0 0 3px var(--color-paper), 0 8px 32px rgba(179,18,90,0.22)',
@@ -79,10 +75,16 @@ export default function Hero() {
             />
           </div>
 
-          {/* @soymarielitaaa handle below photo */}
+          {/* @soymarielitaaa handle below photo — appears ONLY here, not duplicated in the SVG */}
           <p
-            className="mt-3 text-sm font-semibold tracking-wide z-10"
-            style={{ color: 'var(--color-magenta-dark)' }}
+            className="mt-6 z-10"
+            style={{
+              fontFamily: 'var(--font-family-body)',
+              fontWeight: 700,
+              fontSize: '1.3rem',
+              color: '#fff',
+              textShadow: '0 2px 10px rgba(125,19,72,0.6)',
+            }}
           >
             @soymarielitaaa
           </p>
@@ -92,35 +94,33 @@ export default function Hero() {
         <div className="flex flex-col gap-6 text-center md:text-left md:max-w-md">
           {/* Kicker */}
           <span
-            className="inline-block text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full self-start"
-            style={{ backgroundColor: 'var(--color-magenta-dark)', color: 'var(--color-pink-light)' }}
+            className="inline-block text-xs font-bold tracking-[0.35em] uppercase self-start"
+            style={{ color: 'var(--color-magenta-dark)' }}
           >
             {t('hero.kicker' as any)}
           </span>
 
           {/* Title */}
           <h1
-            className="text-4xl md:text-5xl font-bold leading-tight"
-            style={{ fontFamily: 'var(--font-family-serif)', color: 'white', textShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+            className="hero-title-text text-4xl md:text-5xl font-bold leading-tight"
+            style={{ fontFamily: 'var(--font-family-serif)', color: 'white', textShadow: '0 4px 24px rgba(125,19,72,0.35)' }}
             dangerouslySetInnerHTML={{ __html: t('hero.title' as any) }}
           />
 
-          {/* Subtitle (tagline with marker bg) */}
-          <p
-            className="text-base font-medium inline-block px-2 py-0.5"
-            style={{ backgroundColor: 'var(--color-magenta-dark)', color: 'var(--color-pink-light)' }}
-            dangerouslySetInnerHTML={{ __html: t('hero.subtitle' as any) }}
-          />
-
           {/* Tagline lines */}
-          <div className="space-y-1">
+          <div className="space-y-2">
             <p className="text-2xl font-bold" style={{ color: 'var(--color-magenta-dark)' }}>
               {t('hero.tagline1' as any)}
             </p>
-            <p className="text-xl" style={{ color: 'var(--color-ink)' }}>
-              {t('hero.tagline2' as any)}
+            <p>
+              <em
+                className="not-italic inline-block px-2 py-0.5 font-bold text-xl md:text-2xl"
+                style={{ backgroundColor: 'var(--color-magenta-dark)', color: 'var(--color-pink-light)' }}
+              >
+                {t('hero.tagline2' as any)}
+              </em>
             </p>
-            <p className="text-xl italic" style={{ color: 'var(--color-pink)' }}>
+            <p className="text-xl font-bold" style={{ color: 'var(--color-ink)' }}>
               {t('hero.tagline3' as any)}
             </p>
           </div>
@@ -132,6 +132,7 @@ export default function Hero() {
             aria-hidden="true"
             loading="eager"
             className="w-[70px] self-center md:self-start"
+            style={{ filter: 'drop-shadow(0 6px 12px rgba(61,10,36,0.3))' }}
           />
 
           {/* CTAs */}
@@ -139,17 +140,13 @@ export default function Hero() {
             <a
               href="#contacto"
               className="px-6 py-3 rounded-full font-semibold text-white transition-transform hover:scale-105 text-center"
-              style={{ backgroundColor: 'var(--color-magenta)' }}
+              style={{ backgroundColor: 'var(--color-magenta-dark)' }}
             >
               {t('hero.cta' as any)}
             </a>
             <a
               href="#contenido"
-              className="px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105 text-center"
-              style={{
-                backgroundColor: 'var(--color-pink-light)',
-                color: 'var(--color-magenta)',
-              }}
+              className="hero-cta-ghost px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105 text-center"
             >
               {t('hero.cta2' as any)}
             </a>

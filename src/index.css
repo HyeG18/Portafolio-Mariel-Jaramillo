@@ -81,6 +81,27 @@ a {
 }
 
 /* ============================================================
+   Hero — title em color + ghost CTA button
+   ============================================================ */
+
+.hero-title-text em {
+  color: var(--color-lime);
+  font-style: normal;
+}
+
+.hero-cta-ghost {
+  background: transparent;
+  color: var(--color-magenta-dark);
+  border: 2px solid var(--color-magenta-dark);
+  transition: var(--transition-base);
+}
+
+.hero-cta-ghost:hover {
+  background: var(--color-magenta-dark);
+  color: var(--color-pink-light);
+}
+
+/* ============================================================
    Menu lock — used by Nav component
    ============================================================ */
 
