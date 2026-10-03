@@ -1,12 +1,13 @@
 import { useRef } from 'react';
 import { useI18n } from '../../hooks/useI18n';
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll';
+import { assetUrl } from '../../utils/assetUrl';
 
 const BRAND_LOGOS = [
-  'brand-1.webp',
-  'brand-2.webp',
-  'brand-3.webp',
-  'brand-4.webp',
+  { file: 'brand-chicago.webp', alt: 'Restaurante Chicago' },
+  { file: 'brand-brocks.webp', alt: 'Brocks' },
+  { file: 'brand-gummylove.webp', alt: 'Gummy Love' },
+  { file: 'brand-kittypom.webp', alt: 'Kitty Pom' },
 ] as const;
 
 export default function Brands() {
@@ -29,12 +30,13 @@ export default function Brands() {
         />
 
         <div className="flex flex-wrap gap-8 justify-center items-center mb-8">
-          {BRAND_LOGOS.map((logo) => (
+          {BRAND_LOGOS.map(({ file, alt }) => (
             <img
-              key={logo}
-              src={`/assets/images/${logo}`}
-              alt="Brand logo"
-              className="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+              key={file}
+              src={assetUrl('assets/images/' + file)}
+              alt={alt}
+              className="h-12 w-auto object-contain transition-all duration-300 hover:scale-110 hover:-rotate-3"
+              style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))', opacity: 0.7 }}
               loading="lazy"
             />
           ))}
