@@ -58,72 +58,91 @@ export default function Metrics() {
     <section
       id="audiencia"
       ref={ref}
-      className="metrics py-20 px-4 relative"
-      style={{ backgroundColor: 'var(--color-magenta-dark)' }}
+      className="metrics py-20 px-4 relative overflow-hidden"
+      style={{ backgroundColor: 'var(--color-pink-light)' }}
     >
       <img
         src={assetUrl('assets/images/hand-phone.webp')}
         alt=""
         aria-hidden="true"
-        className="absolute bottom-0 right-0 w-32 hidden md:block"
-        style={{ opacity: 0.7 }}
+        className="absolute hidden md:block"
+        style={{
+          width: 'clamp(150px, 22vw, 260px)',
+          right: '-30px',
+          bottom: '-20px',
+          transform: 'rotate(-10deg)',
+          opacity: 0.9,
+        }}
       />
       <div className="max-w-4xl mx-auto relative z-10">
         <h2
-          className="text-3xl md:text-4xl font-bold text-center mb-2 text-white"
-          style={{ fontFamily: 'var(--font-family-serif)' }}
+          className="text-3xl md:text-4xl font-bold text-center mb-2"
+          style={{ fontFamily: 'var(--font-family-serif)', color: 'var(--color-magenta-dark)' }}
           dangerouslySetInnerHTML={{ __html: t('metrics.title' as any) }}
         />
         <p
-          className="text-center mb-12"
+          className="text-center mb-12 mx-auto"
           style={{
-            color: 'var(--color-pink-light)',
-            border: '2px solid var(--color-pink-light)',
+            color: 'var(--color-magenta-dark)',
+            border: '2px solid var(--color-magenta-dark)',
             borderRadius: '999px',
-            display: 'inline-block',
-            padding: '0.25rem 1rem',
-            width: '100%',
+            display: 'table',
+            padding: '0.35rem 1.4rem',
+            fontWeight: 600,
           }}
         >
           {t('metrics.subtitle' as any)}
         </p>
 
-        <div className="grid sm:grid-cols-2 gap-10">
+        <div className="grid sm:grid-cols-2 gap-8">
           {PLATFORMS.map(({ titleKey, infoKey1, infoKey2, stats }) => (
-            <div key={titleKey} className="space-y-4">
+            <div
+              key={titleKey}
+              className="flex flex-col"
+              style={{
+                backgroundColor: 'white',
+                borderRadius: 'var(--radius-lg)',
+                padding: '2rem',
+                boxShadow: 'var(--shadow-card)',
+              }}
+            >
               <h3
-                className="text-2xl font-bold text-white"
+                className="metrics-card-title text-2xl font-bold mb-2"
+                style={{ color: 'var(--color-magenta-dark)' }}
                 dangerouslySetInnerHTML={{ __html: t(titleKey as any) }}
               />
               <p
-                className="text-sm"
-                style={{ color: 'var(--color-pink-light)' }}
+                className="text-sm mb-1"
+                style={{ color: 'var(--color-ink)' }}
                 dangerouslySetInnerHTML={{ __html: t(infoKey1 as any) }}
               />
               <p
-                className="text-sm"
-                style={{ color: 'var(--color-pink-light)' }}
+                className="text-sm mb-4"
+                style={{ color: 'var(--color-ink)' }}
                 dangerouslySetInnerHTML={{ __html: t(infoKey2 as any) }}
               />
-              <div className="space-y-3">
+
+              <div className="flex flex-col gap-3 mt-auto pt-4">
                 {stats.map(({ labelKey, pct }) => (
-                  <div key={labelKey} className="metrics__bar">
-                    <span className="text-sm font-semibold text-white block mb-1">
+                  <div key={labelKey} className="grid grid-cols-[4.5rem_1fr_3.2rem] items-center gap-3 text-sm">
+                    <span className="font-bold" style={{ color: 'var(--color-magenta-dark)' }}>
                       {t(labelKey as any)}
                     </span>
                     <div
                       className="h-3 rounded-full overflow-hidden"
-                      style={{ backgroundColor: 'rgba(255,255,255,0.2)' }}
+                      style={{ backgroundColor: 'var(--color-pink-soft)' }}
                     >
                       <div
                         className="metrics__bar-fill"
                         data-pct={pct}
                         style={{
-                          backgroundColor:
-                            pct >= 50 ? 'var(--color-pink)' : 'var(--color-pink-soft)',
+                          backgroundColor: pct >= 50 ? 'var(--color-lime)' : 'var(--color-pink)',
                         }}
                       />
                     </div>
+                    <span className="font-extrabold text-right" style={{ color: 'var(--color-magenta-dark)' }}>
+                      {pct}%
+                    </span>
                   </div>
                 ))}
               </div>
