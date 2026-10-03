@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useI18n } from '../../hooks/useI18n';
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll';
+import { assetUrl } from '../../utils/assetUrl';
 
 export default function AboutMe() {
   const { t } = useI18n();
@@ -15,7 +16,7 @@ export default function AboutMe() {
       style={{ backgroundColor: 'var(--lime)' }}
     >
       <div className="max-w-5xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid min-[860px]:grid-cols-[1fr_1.4fr] gap-12 items-center">
           {/* Phone-frame photo */}
           <div className="flex justify-center">
             <div
@@ -27,24 +28,21 @@ export default function AboutMe() {
               aria-hidden="true"
             >
               <img
-                src="/assets/images/portrait-about.webp"
+                src={assetUrl('assets/images/portrait-about.webp')}
                 alt="Mariel Jaramillo — Retrato"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-              <div
-                className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-6 rounded-full"
-                style={{ backgroundColor: 'var(--color-ink)' }}
-              />
               <span
-                className="absolute text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full"
+                className="absolute text-xs font-bold uppercase tracking-wider text-center"
                 style={{
                   bottom: '12%',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  backgroundColor: 'var(--color-magenta)',
-                  color: 'var(--color-paper)',
-                  whiteSpace: 'nowrap',
+                  left: '5%',
+                  right: '5%',
+                  backgroundColor: 'var(--color-magenta-hot)',
+                  color: '#fff',
+                  padding: '0.35em 0.5em',
+                  borderRadius: '0.4rem',
                 }}
               >
                 {t('about.badge' as any)}
@@ -61,7 +59,7 @@ export default function AboutMe() {
             />
             <p
               className="text-lg font-medium mb-4"
-              style={{ color: 'var(--color-magenta)' }}
+              style={{ color: 'var(--color-magenta-dark)' }}
             >
               {t('about.lead' as any)}
             </p>
