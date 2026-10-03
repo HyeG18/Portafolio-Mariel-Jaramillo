@@ -51,17 +51,17 @@ export default function Packages() {
           {PACKAGES.map(({ nameKey, features, priceKey, noteKey, popular }) => (
             <div
               key={nameKey}
-              className={`relative rounded-3xl p-6 text-left ${popular ? 'ring-2' : ''}`}
+              className="package-card relative rounded-3xl p-6 text-left transition-transform duration-300 hover:-translate-y-1.5"
+              data-popular={popular}
               style={{
-                backgroundColor: popular ? 'white' : 'var(--pink-light)',
-                boxShadow: popular ? 'var(--shadow-card)' : 'none',
-                '--tw-ring-color': popular ? 'var(--color-magenta)' : 'transparent',
-              } as React.CSSProperties}
+                border: `3px solid ${popular ? 'var(--color-magenta-dark)' : 'var(--color-pink)'}`,
+                boxShadow: 'var(--shadow-card)',
+              }}
             >
               {popular && (
                 <span
-                  className="absolute text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full"
-                  style={{ top: '-14px', right: '18px', backgroundColor: 'var(--color-magenta)', color: 'white' }}
+                  className="package__badge text-xs font-bold tracking-wider uppercase px-4 py-1 rounded-full"
+                  style={{ backgroundColor: 'var(--color-magenta-dark)', color: 'var(--color-lime)' }}
                 >
                   {t('packages.popular' as any)}
                 </span>
