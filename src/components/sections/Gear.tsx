@@ -1,14 +1,15 @@
 import { useRef } from 'react';
 import { useI18n } from '../../hooks/useI18n';
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll';
+import { assetUrl } from '../../utils/assetUrl';
 
 const GEAR_ITEMS = [
-  { key: 'gear.1', img: 'gear-mic.webp' },
-  { key: 'gear.2', img: 'gear-phone.webp' },
-  { key: 'gear.3', img: 'gear-tripod-big.webp' },
-  { key: 'gear.4', img: 'gear-rgb-panel.webp' },
-  { key: 'gear.5', img: 'gear-light-panel.webp' },
-  { key: 'gear.6', img: 'gear-tripod-small.webp' },
+  { key: 'gear.1', img: 'mics-tx-f11.webp' },
+  { key: 'gear.2', img: 'phone-samsung-a25.webp' },
+  { key: 'gear.3', img: 'tripod-large.webp' },
+  { key: 'gear.4', img: 'panel-rgb.webp' },
+  { key: 'gear.5', img: 'light-panel.webp' },
+  { key: 'gear.6', img: 'tripod-small.webp' },
 ] as const;
 
 export default function Gear() {
@@ -21,7 +22,7 @@ export default function Gear() {
       id="equipo"
       ref={ref}
       className="reveal py-20 px-4"
-      style={{ backgroundColor: 'var(--color-paper)' }}
+      style={{ backgroundColor: 'var(--cream)' }}
     >
       <div className="max-w-5xl mx-auto text-center">
         <h2
@@ -42,10 +43,17 @@ export default function Gear() {
                 style={{ backgroundColor: 'var(--color-pink-light)' }}
               >
                 <img
-                  src={`/assets/images/${img}`}
+                  src={assetUrl('assets/images/' + img)}
                   alt={t(key as any)}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover transition-transform duration-300"
                   loading="lazy"
+                  style={{ transform: 'translateY(0) rotate(0deg)' }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.transform = 'translateY(-6px) rotate(-1deg)';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.transform = 'translateY(0) rotate(0deg)';
+                  }}
                 />
               </div>
               <figcaption
