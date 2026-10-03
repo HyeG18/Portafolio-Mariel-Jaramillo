@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="min-h-screen flex items-center justify-center px-4 pt-20"
+      className="min-h-screen flex items-center justify-center px-4 pt-24 md:pt-20"
       style={{
         backgroundImage: `linear-gradient(rgba(232,115,168,0.55), rgba(232,115,168,0.55)), url('${assetUrl('assets/images/texture-pink.webp')}')`,
         backgroundSize: 'cover',
@@ -95,7 +95,7 @@ export default function Hero() {
         <div className="flex flex-col gap-6 text-center md:text-left md:max-w-md">
           {/* Kicker */}
           <span
-            className="inline-block text-sm font-bold tracking-[0.35em] uppercase self-start"
+            className="inline-block text-sm font-bold tracking-[0.35em] uppercase"
             style={{ color: 'var(--color-magenta-dark)' }}
           >
             {t('hero.kicker' as any)}
