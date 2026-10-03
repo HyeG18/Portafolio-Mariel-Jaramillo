@@ -379,3 +379,17 @@ body.menu-open {
 .contact__card:hover {
   transform: rotate(-1deg) scale(1.02);
 }
+
+/* ============================================================
+   Skills — em color overrides inside card titles
+   ============================================================ */
+
+.skills-card-dark-title em {
+  color: var(--lime);
+  font-style: normal;
+}
+
+.skills-card-light-title em {
+  color: var(--magenta-hot);
+  font-style: normal;
+}

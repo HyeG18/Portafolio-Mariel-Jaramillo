@@ -40,19 +40,19 @@ export default function Skills() {
 
         <div className="grid sm:grid-cols-2 gap-8">
           <div
-            className="relative rounded-3xl p-8 text-left overflow-hidden"
-            style={{ backgroundColor: 'var(--magenta-dark)', boxShadow: 'var(--shadow-card)' }}
+            className="relative rounded-3xl text-left overflow-hidden"
+            style={{ backgroundColor: 'var(--magenta-dark)', boxShadow: 'var(--shadow-card)', padding: '2.2rem 2rem 6.5rem' }}
           >
             <img
               src={assetUrl('assets/images/camera-pink.webp')}
               alt=""
-              className="absolute bottom-2 right-2 pointer-events-none"
+              className="absolute bottom-4 right-5 pointer-events-none"
               style={{ width: '110px', opacity: 0.95 }}
               aria-hidden="true"
             />
             <h3
-              className="text-xl font-bold mb-6"
-              style={{ color: 'var(--color-pink-soft)' }}
+              className="skills-card-dark-title text-xl font-bold mb-6"
+              style={{ color: 'var(--color-pink-light)' }}
               dangerouslySetInnerHTML={{ __html: t('skills.tools.title' as any) }}
             />
             <ul className="space-y-4">
@@ -72,18 +72,18 @@ export default function Skills() {
           </div>
 
           <div
-            className="relative rounded-3xl p-8 text-left overflow-hidden"
-            style={{ backgroundColor: 'white', border: '2px solid var(--pink-soft)', boxShadow: 'var(--shadow-card)' }}
+            className="relative rounded-3xl text-left overflow-hidden"
+            style={{ backgroundColor: 'white', border: '2px solid var(--pink-soft)', boxShadow: 'var(--shadow-card)', padding: '2.2rem 2rem 6.5rem' }}
           >
             <img
               src={assetUrl('assets/images/tulips.webp')}
               alt=""
-              className="absolute bottom-2 right-2 pointer-events-none"
+              className="absolute bottom-4 right-5 pointer-events-none"
               style={{ width: '110px', opacity: 0.95 }}
               aria-hidden="true"
             />
             <h3
-              className="text-xl font-bold mb-6"
+              className="skills-card-light-title text-xl font-bold mb-6"
               style={{ color: 'var(--color-magenta-dark)' }}
               dangerouslySetInnerHTML={{ __html: t('skills.strategy.title' as any) }}
             />
