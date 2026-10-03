@@ -35,8 +35,11 @@ export default function Brands() {
               key={file}
               src={assetUrl('assets/images/' + file)}
               alt={alt}
-              className="h-12 w-auto object-contain transition-all duration-300 hover:scale-110 hover:-rotate-3"
-              style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))', opacity: 0.7 }}
+              className="w-auto object-contain transition-all duration-300 hover:scale-110 hover:-rotate-3"
+              style={{
+                width: 'clamp(100px, 18vw, 160px)',
+                filter: 'drop-shadow(0 6px 14px rgba(61,10,36,0.15))',
+              }}
               loading="lazy"
             />
           ))}
