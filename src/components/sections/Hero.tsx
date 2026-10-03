@@ -14,7 +14,7 @@ export default function Hero() {
         backgroundPosition: 'center',
       }}
     >
-      <div className="max-w-6xl w-full flex flex-col md:flex-row md:items-center md:justify-center gap-10 md:gap-40">
+      <div className="max-w-6xl w-full flex flex-col items-center md:flex-row md:items-center md:justify-center gap-10 md:gap-40">
 
         {/* Left: Photo + decorations */}
         <div className="flex flex-col items-center relative" style={{ width: 'min(320px, 35vw)' }}>

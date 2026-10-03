@@ -39,6 +39,6 @@ export default [
     },
   },
   {
-    ignores: ['dist/', 'node_modules/', '.git/', 'js/', 'lang/', 'css/'],
+    ignores: ['dist/', 'node_modules/', '.git/', 'js/', 'lang/', 'css/', '.vite/'],
   },
 ];
