@@ -112,6 +112,29 @@ body.menu-open {
       repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(200,180,160,0.15) 40px, rgba(200,180,160,0.15) 41px),
       repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(200,180,160,0.15) 40px, rgba(200,180,160,0.15) 41px);
   }
+
+  .reel {
+    position: relative;
+  }
+
+  .reel::after {
+    content: '▶';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .reel:hover::after {
+    opacity: 1;
+  }
 }
 
 /* ============================================================

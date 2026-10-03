@@ -19,9 +19,23 @@ https://www.instagram.com/reel/DWKImhwETFN/
 
 ---
 
-## Notas para la implementación React
+## Comportamiento original del sitio (ROLLBACK REFERENCE)
 
-- El componente ContentReels en el plan usa 1 reel activo por niche (tabs/pills para cambiar de niche, click para cargar embed).
-- El HTML original muestra TODOS los reels de cada niche al mismo tiempo (sin tabs).
-- Si se quiere paridad exacta con el original (mostrar todos los reels, no tabs), el componente debe cambiar: en vez de 1 reel activo, renderizar todos los reels del niche activo con sus propios estados de carga.
-- La decisión de tabs (nueva UI) vs mostrar-todos (paridad exacta) queda pendiente. Por ahora el plan usa tabs (1 reel activo).
+El sitio actual (vanilla HTML/CSS/JS) muestra todos los reels de CADA niche simultáneamente, sin tabs ni selector de niche. El usuario ve la sección "Contenido" con los 4 niches expandidos y todos sus reels visibles de una vez.
+
+Estructura HTML original:
+- `<article class="niche" data-niche="food">` → contiene 2 divs `.reel` (food 1 + food 2)
+- `<article class="niche" data-niche="beauty">` → 2 reels
+- `<article class="niche" data-niche="lifestyle">` → 2 reels
+- `<article class="niche" data-niche="pets">` → 1 reel
+
+Cada `.reel` tiene `data-reel="https://www.instagram.com/reel/..."`. Click en cualquier reel carga su iframe embed inline, reemplazando el thumbnail.
+
+## Implementación actual (tabs — NO es paridad exacta)
+
+Para la migración React se implementó con tabs/pills (1 niche activo a la vez) para simplificar la UI.
+Si se quiere rollback a comportamiento original:
+1. Cambiar ContentReels.tsx para renderizar todos los niches expandidos simultáneamente
+2. Cada `.reel` tiene su propio estado `loaded: boolean` en vez de un solo `activeNiche`
+3. Eliminar estado `activeNiche` y el selector de pills
+4. Renderizar `<article class="niche">` por cada niche (como en el HTML original)
