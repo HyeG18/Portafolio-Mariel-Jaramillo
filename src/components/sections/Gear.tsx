@@ -27,11 +27,11 @@ export default function Gear() {
       <div className="max-w-5xl mx-auto text-center">
         <h2
           className="text-3xl md:text-4xl font-bold mb-2"
-          style={{ fontFamily: 'var(--font-family-serif)', color: 'var(--color-ink)' }}
+          style={{ fontFamily: 'var(--font-family-body)', color: 'var(--color-magenta-dark)' }}
         >
           {t('gear.title' as any)}
         </h2>
-        <p className="mb-12" style={{ color: 'var(--color-magenta)' }}>
+        <p className="mb-12" style={{ fontFamily: 'var(--font-family-body)', color: 'var(--color-magenta)' }}>
           {t('gear.subtitle' as any)}
         </p>
 
