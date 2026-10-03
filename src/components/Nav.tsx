@@ -8,13 +8,12 @@ const NAV_LINKS = [
   { key: 'nav.skills', href: '#habilidades' },
   { key: 'nav.videos', href: '#contenido' },
   { key: 'nav.gear', href: '#equipo' },
-  { key: 'nav.metrics', href: '#audiencia' },
   { key: 'nav.packages', href: '#paquetes' },
   { key: 'nav.contact', href: '#contacto' },
 ] as const;
 
 export default function Nav() {
-  const { t, lang, toggleLang } = useI18n();
+  const { t, lang, setLang } = useI18n();
   const scrolled = useScrolled(10);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -30,21 +29,20 @@ export default function Nav() {
       className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 ${
         scrolled ? 'shadow-md' : ''
       }`}
-      style={{ backgroundColor: 'var(--color-paper)' }}
+      style={{ backgroundColor: 'rgba(254,239,244,0.85)', backdropFilter: 'blur(12px)' }}
     >
       <nav className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <a
           href="#inicio"
           className="font-bold text-lg"
-          style={{ color: 'var(--color-magenta)' }}
           aria-label="Mariel Jaramillo — Inicio"
         >
-          Mariel Jaramillo
+          UGC <em style={{ color: 'var(--color-magenta-hot)' }}>Mariel</em>
         </a>
 
         <ul
           id="navLinks"
-          className="hidden md:flex gap-6 list-none m-0 p-0"
+          className="hidden lg:flex gap-6 list-none m-0 p-0"
         >
           {NAV_LINKS.map(({ key, href }) => (
             <li key={key}>
@@ -61,59 +59,79 @@ export default function Nav() {
         </ul>
 
         <div className="flex items-center gap-3">
-          <button
-            onClick={toggleLang}
-            aria-label={`Cambiar a ${lang === 'es' ? 'inglés' : 'español'}`}
-            className="text-sm font-semibold px-2 py-1 rounded transition-colors"
-            style={{
-              backgroundColor: 'var(--color-pink-light)',
-              color: 'var(--color-magenta)',
-            }}
-          >
-            {lang === 'es' ? 'EN' : 'ES'}
-          </button>
+          <div className="nav__lang flex gap-2">
+            <button
+              onClick={() => setLang('es')}
+              aria-label="Cambiar a español"
+              style={{ opacity: lang === 'es' ? 1 : 0.45 }}
+            >
+              ES
+            </button>
+            <button
+              onClick={() => setLang('en')}
+              aria-label="Change to English"
+              style={{ opacity: lang === 'en' ? 1 : 0.45 }}
+            >
+              EN
+            </button>
+          </div>
 
           <button
             id="navBurger"
-            className="md:hidden flex flex-col gap-1.5 p-2"
+            className="lg:hidden flex flex-col gap-1.5 p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Abrir menú"
             aria-expanded={menuOpen}
           >
             <span
-              className="block w-6 h-0.5"
-              style={{ backgroundColor: 'var(--color-ink)' }}
+              className="block w-6 h-0.5 transition-transform duration-300"
+              style={{
+                backgroundColor: 'var(--color-ink)',
+                transform: menuOpen ? 'translateY(8px) rotate(45deg)' : 'none',
+              }}
             />
             <span
-              className="block w-6 h-0.5"
-              style={{ backgroundColor: 'var(--color-ink)' }}
+              className="block w-6 h-0.5 transition-opacity duration-300"
+              style={{
+                backgroundColor: 'var(--color-ink)',
+                opacity: menuOpen ? 0 : 1,
+              }}
             />
             <span
-              className="block w-6 h-0.5"
-              style={{ backgroundColor: 'var(--color-ink)' }}
+              className="block w-6 h-0.5 transition-transform duration-300"
+              style={{
+                backgroundColor: 'var(--color-ink)',
+                transform: menuOpen ? 'translateY(-8px) rotate(-45deg)' : 'none',
+              }}
             />
           </button>
         </div>
       </nav>
 
-      {menuOpen && (
-        <div className="md:hidden" style={{ backgroundColor: 'var(--color-paper)' }}>
-          <ul className="flex flex-col gap-4 p-6 list-none m-0">
-            {NAV_LINKS.map(({ key, href }) => (
-              <li key={key}>
-                <a
-                  href={href}
-                  className="text-base font-medium"
-                  style={{ color: 'var(--color-ink)' }}
-                  onClick={handleLinkClick}
-                >
-                  {t(key as any)}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <div
+        className="lg:hidden overflow-hidden transition-all duration-300 ease-out"
+        style={{
+          backgroundColor: 'rgba(254,239,244,0.95)',
+          transform: menuOpen ? 'translateY(0)' : 'translateY(-120%)',
+          opacity: menuOpen ? 1 : 0,
+          maxHeight: menuOpen ? '500px' : '0',
+        }}
+      >
+        <ul className="flex flex-col gap-4 p-6 list-none m-0">
+          {NAV_LINKS.map(({ key, href }) => (
+            <li key={key}>
+              <a
+                href={href}
+                className="text-base font-medium"
+                style={{ color: 'var(--color-ink)' }}
+                onClick={handleLinkClick}
+              >
+                {t(key as any)}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </header>
   );
 }

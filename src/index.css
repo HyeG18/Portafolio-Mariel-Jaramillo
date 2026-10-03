@@ -89,6 +89,19 @@ body.menu-open {
 }
 
 /* ============================================================
+   Nav component styles
+   ============================================================ */
+
+.nav__lang button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+}
+
+/* ============================================================
    prefers-reduced-motion — preserve a11y from original
    ============================================================ */
 

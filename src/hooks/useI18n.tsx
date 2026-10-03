@@ -17,6 +17,7 @@ type I18nContextValue = {
   /* eslint-disable no-unused-vars -- TypeScript function type in interface requires named parameter */
   t: (key: I18nKeys) => string;
   toggleLang: () => void;
+  setLang: (lang: 'es' | 'en') => void;
 };
 
 const I18nContext = createContext<I18nContextValue | null>(null);
@@ -25,7 +26,7 @@ const dictionaries = { es: esDict, en: enDict };
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const savedLang = (localStorage.getItem(STORAGE_KEY) as 'es' | 'en') ?? 'es';
-  const [lang, setLang] = useState<'es' | 'en'>(savedLang);
+  const [lang, setLangState] = useState<'es' | 'en'>(savedLang);
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -43,12 +44,17 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   const toggleLang = () => {
     const next = lang === 'es' ? 'en' : 'es';
-    setLang(next);
+    setLangState(next);
     localStorage.setItem(STORAGE_KEY, next);
   };
 
+  const setLang = (lang: 'es' | 'en') => {
+    setLangState(lang);
+    localStorage.setItem(STORAGE_KEY, lang);
+  };
+
   return (
-    <I18nContext.Provider value={{ dict: dictionaries[lang], lang, t, toggleLang }}>
+    <I18nContext.Provider value={{ dict: dictionaries[lang], lang, t, toggleLang, setLang }}>
       {children}
     </I18nContext.Provider>
   );
