@@ -1,0 +1,27 @@
+# Instagram Reel URLs — Extraídas de index.html
+# Respaldo antes de migración React/TS/Tailwind
+# Fecha: 2026-10-03
+
+## Comida & Gastronomía (food)
+https://www.instagram.com/reel/DXad8f1R9Oo/
+https://www.instagram.com/reel/DW1qZ3-xHcF/
+
+## Belleza & Skincare (beauty)
+https://www.instagram.com/reel/DW48lRYsPfZ/
+https://www.instagram.com/reel/DWcrYoPkbk_/
+
+## Lifestyle
+https://www.instagram.com/reel/DWRdzafkTjU/
+https://www.instagram.com/reel/DV_wYhlESgA/
+
+## Mascotas (pets)
+https://www.instagram.com/reel/DWKImhwETFN/
+
+---
+
+## Notas para la implementación React
+
+- El componente ContentReels en el plan usa 1 reel activo por niche (tabs/pills para cambiar de niche, click para cargar embed).
+- El HTML original muestra TODOS los reels de cada niche al mismo tiempo (sin tabs).
+- Si se quiere paridad exacta con el original (mostrar todos los reels, no tabs), el componente debe cambiar: en vez de 1 reel activo, renderizar todos los reels del niche activo con sus propios estados de carga.
+- La decisión de tabs (nueva UI) vs mostrar-todos (paridad exacta) queda pendiente. Por ahora el plan usa tabs (1 reel activo).
