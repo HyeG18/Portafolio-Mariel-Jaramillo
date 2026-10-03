@@ -102,6 +102,19 @@ body.menu-open {
 }
 
 /* ============================================================
+   Packages section texture
+   ============================================================ */
+
+@layer components {
+  .packages {
+    background-color: var(--cream);
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(200,180,160,0.15) 40px, rgba(200,180,160,0.15) 41px),
+      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(200,180,160,0.15) 40px, rgba(200,180,160,0.15) 41px);
+  }
+}
+
+/* ============================================================
    prefers-reduced-motion — preserve a11y from original
    ============================================================ */
 

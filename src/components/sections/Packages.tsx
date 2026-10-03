@@ -35,8 +35,7 @@ export default function Packages() {
     <section
       id="paquetes"
       ref={ref}
-      className="reveal py-20 px-4"
-      style={{ backgroundColor: 'var(--color-paper)' }}
+      className="packages reveal py-20 px-4"
     >
       <div className="max-w-5xl mx-auto text-center">
         <h2
@@ -52,17 +51,17 @@ export default function Packages() {
           {PACKAGES.map(({ nameKey, features, priceKey, noteKey, popular }) => (
             <div
               key={nameKey}
-              className={`rounded-3xl p-6 text-left ${popular ? 'ring-2' : ''}`}
+              className={`relative rounded-3xl p-6 text-left ${popular ? 'ring-2' : ''}`}
               style={{
-                backgroundColor: popular ? 'var(--color-paper)' : 'var(--color-pink-light)',
+                backgroundColor: popular ? 'white' : 'var(--pink-light)',
                 boxShadow: popular ? 'var(--shadow-card)' : 'none',
                 '--tw-ring-color': popular ? 'var(--color-magenta)' : 'transparent',
               } as React.CSSProperties}
             >
               {popular && (
                 <span
-                  className="inline-block text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full mb-4"
-                  style={{ backgroundColor: 'var(--color-magenta)', color: 'white' }}
+                  className="absolute text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full"
+                  style={{ top: '-14px', right: '18px', backgroundColor: 'var(--color-magenta)', color: 'white' }}
                 >
                   {t('packages.popular' as any)}
                 </span>
