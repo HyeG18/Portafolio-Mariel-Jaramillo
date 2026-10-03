@@ -13,6 +13,21 @@ export default [
         ecmaVersion: 'latest',
         sourceType: 'module',
       },
+      globals: {
+        React: 'readonly',
+        window: 'readonly',
+        document: 'readonly',
+        IntersectionObserver: 'readonly',
+        localStorage: 'readonly',
+        console: 'readonly',
+        HTMLElement: 'readonly',
+        Element: 'readonly',
+        Node: 'readonly',
+        CSSStyleDeclaration: 'readonly',
+        Event: 'readonly',
+        KeyboardEvent: 'readonly',
+        HTMLDivElement: 'readonly',
+      },
     },
     plugins: {
       '@typescript-eslint': tseslint,
@@ -20,10 +35,10 @@ export default [
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
     },
   },
   {
-    ignores: ['dist/', 'node_modules/', '.git/'],
+    ignores: ['dist/', 'node_modules/', '.git/', 'js/', 'lang/', 'css/'],
   },
 ];

@@ -14,6 +14,7 @@ const STORAGE_KEY = 'mariel-lang';
 type I18nContextValue = {
   dict: I18nDict;
   lang: 'es' | 'en';
+  /* eslint-disable no-unused-vars -- TypeScript function type in interface requires named parameter */
   t: (key: I18nKeys) => string;
   toggleLang: () => void;
 };
