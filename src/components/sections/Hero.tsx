@@ -17,7 +17,7 @@ export default function Hero() {
       <div className="max-w-6xl w-full flex flex-col items-center md:flex-row md:items-center md:justify-center gap-10 md:gap-40">
 
         {/* Left: Photo + decorations */}
-        <div className="flex flex-col items-center relative" style={{ width: 'min(320px, 35vw)' }}>
+        <div className="flex flex-col items-center relative mt-6 md:mt-0 self-center md:w-[min(320px,35vw)]" style={{ width: 'min(320px, 75vw)' }}>
           {/* Starburst image (behind photo, now sized relative to an explicitly-widthed wrapper) */}
           <img
             src={assetUrl('assets/images/starburst-glitter.webp')}
@@ -137,7 +137,7 @@ export default function Hero() {
           />
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-6 md:mb-0">
             <a
               href="#contacto"
               className="hero-cta-primary rounded-full font-semibold text-white transition-transform hover:scale-105 text-center"
