@@ -34,3 +34,6 @@ scripts/preview/
 
 # Superpowers SDD workspace
 .superpowers/
+
+#Vite
+.vite/
