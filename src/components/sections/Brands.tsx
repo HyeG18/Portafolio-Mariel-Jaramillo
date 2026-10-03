@@ -19,17 +19,17 @@ export default function Brands() {
     <section
       id="marcas"
       ref={ref}
-      className="reveal py-16 px-4"
-      style={{ backgroundColor: 'var(--color-pink-light)' }}
+      className="reveal brands py-24 px-4"
+      style={{ backgroundColor: 'var(--color-paper)' }}
     >
       <div className="max-w-5xl mx-auto text-center">
         <h2
-          className="text-2xl md:text-3xl font-bold mb-2"
-          style={{ fontFamily: 'var(--font-family-serif)', color: 'var(--color-ink)' }}
+          className="text-3xl md:text-4xl font-bold mb-20"
+          style={{ fontFamily: 'var(--font-family-body)', color: 'var(--color-magenta-dark)' }}
           dangerouslySetInnerHTML={{ __html: t('brands.title' as any) }}
         />
 
-        <div className="flex flex-wrap gap-8 justify-center items-center mb-8">
+        <div className="flex flex-wrap gap-12 justify-center items-center mb-20">
           {BRAND_LOGOS.map(({ file, alt }) => (
             <img
               key={file}
@@ -46,8 +46,8 @@ export default function Brands() {
         </div>
 
         <p
-          className="text-sm font-medium"
-          style={{ color: 'var(--color-magenta)' }}
+          className="text-3xl font-bold"
+          style={{ color: 'var(--color-magenta-hot)' }}
         >
           {t('brands.cta' as any)}
         </p>

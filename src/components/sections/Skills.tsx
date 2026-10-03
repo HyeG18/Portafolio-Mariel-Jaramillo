@@ -30,8 +30,8 @@ export default function Skills() {
     >
       <div className="max-w-4xl mx-auto text-center">
         <h2
-          className="text-3xl md:text-4xl font-bold mb-2"
-          style={{ fontFamily: 'var(--font-family-serif)', color: 'var(--color-ink)' }}
+          className="text-4xl md:text-5xl font-bold mb-4"
+          style={{ fontFamily: 'var(--font-family-body)', color: 'var(--color-magenta-dark)' }}
           dangerouslySetInnerHTML={{ __html: t('skills.title' as any) }}
         />
         <p className="mb-12" style={{ color: 'var(--color-magenta)' }}>
@@ -41,7 +41,7 @@ export default function Skills() {
         <div className="grid sm:grid-cols-2 gap-8">
           <div
             className="relative rounded-3xl text-left overflow-hidden"
-            style={{ backgroundColor: 'var(--magenta-dark)', boxShadow: 'var(--shadow-card)', padding: '2.2rem 2rem 6.5rem' }}
+            style={{ backgroundColor: 'var(--color-magenta-dark)', boxShadow: 'var(--shadow-card)', padding: '2.2rem 2rem 6.5rem' }}
           >
             <img
               src={assetUrl('assets/images/camera-pink.webp')}
@@ -60,7 +60,7 @@ export default function Skills() {
                 <li key={key} className="flex items-center gap-3">
                   <span
                     className="w-2 h-2 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: 'var(--pink)' }}
+                    style={{ backgroundColor: 'var(--color-pink)' }}
                     aria-hidden="true"
                   />
                   <span className="font-medium" style={{ color: 'white' }}>
@@ -73,7 +73,7 @@ export default function Skills() {
 
           <div
             className="relative rounded-3xl text-left overflow-hidden"
-            style={{ backgroundColor: 'white', border: '2px solid var(--pink-soft)', boxShadow: 'var(--shadow-card)', padding: '2.2rem 2rem 6.5rem' }}
+            style={{ backgroundColor: 'white', border: '2px solid var(--color-pink-soft)', boxShadow: 'var(--shadow-card)', padding: '2.2rem 2rem 6.5rem' }}
           >
             <img
               src={assetUrl('assets/images/tulips.webp')}
@@ -92,7 +92,7 @@ export default function Skills() {
                 <li key={key} className="flex items-center gap-3">
                   <span
                     className="w-2 h-2 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: 'var(--lime-dark)' }}
+                    style={{ backgroundColor: 'var(--color-lime-dark)' }}
                     aria-hidden="true"
                   />
                   <span className="font-medium" style={{ color: 'var(--color-ink)' }}>

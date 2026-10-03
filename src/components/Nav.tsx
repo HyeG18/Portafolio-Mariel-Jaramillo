@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { key: 'nav.skills', href: '#habilidades' },
   { key: 'nav.videos', href: '#contenido' },
   { key: 'nav.gear', href: '#equipo' },
+  { key: 'nav.metrics', href: '#audiencia' },
   { key: 'nav.packages', href: '#paquetes' },
   { key: 'nav.contact', href: '#contacto' },
 ] as const;
@@ -34,7 +35,7 @@ export default function Nav() {
       <nav className="w-full flex items-center justify-between" style={{ padding: '0.9rem 1.5rem' }}>
         <a
           href="#inicio"
-          className="font-bold text-lg"
+          className="font-bold text-xl"
           style={{ color: 'var(--color-magenta-dark)' }}
           aria-label="Mariel Jaramillo — Inicio"
         >
@@ -49,7 +50,7 @@ export default function Nav() {
             <li key={key}>
               <a
                 href={href}
-                className="text-sm font-medium hover:opacity-80 transition-opacity"
+                className="text-base font-semibold hover:opacity-80 transition-opacity"
                 style={{ color: 'var(--color-ink)' }}
                 onClick={handleLinkClick}
               >
@@ -141,7 +142,7 @@ export default function Nav() {
             <li key={key}>
               <a
                 href={href}
-                className="text-base font-medium"
+                className="text-base font-semibold"
                 style={{ color: 'var(--color-ink)' }}
                 onClick={handleLinkClick}
               >

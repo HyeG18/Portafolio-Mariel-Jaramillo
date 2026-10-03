@@ -25,10 +25,12 @@
    Base resets — preserved from original styles.css
    ============================================================ */
 
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 }
 
 html {
@@ -101,6 +103,25 @@ a {
   color: var(--color-pink-light);
 }
 
+.hero-cta-primary {
+  background: var(--color-magenta-dark);
+  color: white;
+  padding: 0.85rem 2.2rem;
+  transition: var(--transition-base);
+}
+
+.hero-cta-primary:hover {
+  background: var(--color-magenta-hot);
+}
+
+.hero-cta-ghost {
+  background: transparent;
+  color: var(--color-magenta-dark);
+  border: 2px solid var(--color-magenta-dark);
+  padding: 0.85rem 2.2rem;
+  transition: var(--transition-base);
+}
+
 /* ============================================================
    Menu lock — used by Nav component
    ============================================================ */
@@ -126,13 +147,10 @@ body.menu-open {
    Contact section styles
    ============================================================ */
 
-.contact__info h2 span {
-  color: var(--lime);
-}
-
 .contact__info h2 em {
-  color: var(--magenta-dark);
+  color: var(--color-magenta-dark);
   font-style: normal;
+  font-weight: 700;
 }
 
 /* ============================================================
@@ -141,7 +159,7 @@ body.menu-open {
 
 @layer components {
   .packages {
-    background-color: var(--cream);
+    background-color: var(--color-cream);
     background-image:
       repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(200,180,160,0.15) 40px, rgba(200,180,160,0.15) 41px),
       repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(200,180,160,0.15) 40px, rgba(200,180,160,0.15) 41px);
@@ -202,27 +220,27 @@ body.menu-open {
 
   .metrics__bar-label {
     font-weight: 700;
-    color: var(--magenta-dark);
+    color: var(--color-magenta-dark);
   }
 
   .metrics__bar-value {
     font-weight: 800;
-    color: var(--magenta-dark);
+    color: var(--color-magenta-dark);
     text-align: right;
   }
 
   .metrics__bar-track {
     height: 12px;
-    background: var(--pink-soft);
+    background: var(--color-pink-soft);
     border-radius: 999px;
   }
 
   .metrics__bar-fill--women {
-    background: var(--lime);
+    background: var(--color-lime);
   }
 
   .metrics__bar-fill--men {
-    background: var(--pink);
+    background: var(--color-pink);
   }
 
 /* ============================================================
@@ -233,7 +251,7 @@ body.menu-open {
     display: block;
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--magenta);
+    color: var(--color-magenta);
   }
 
   .package__badge {
@@ -273,7 +291,7 @@ body.menu-open {
    ============================================================ */
 
 .contact__card {
-  background: var(--paper);
+  background: var(--color-paper);
   border-radius: var(--radius-lg);
   padding: 1.6rem;
   transition: transform 0.3s ease;
@@ -292,7 +310,7 @@ body.menu-open {
 }
 
 .contact-item:hover {
-  background: var(--pink-soft);
+  background: var(--color-pink-soft);
   transform: translateX(6px);
 }
 
@@ -301,12 +319,12 @@ body.menu-open {
    ============================================================ */
 
 .skills-card-dark-title em {
-  color: var(--lime);
+  color: var(--color-lime);
   font-style: normal;
 }
 
 .skills-card-light-title em {
-  color: var(--magenta-hot);
+  color: var(--color-magenta-hot);
   font-style: normal;
 }
 
@@ -315,7 +333,25 @@ body.menu-open {
    ============================================================ */
 
 .niche-title em {
-  color: var(--pink);
+  color: var(--color-pink);
   font-style: normal;
   font-weight: 700;
+}
+
+/* ============================================================
+   Brands — em color for "confiaron en mí"
+   ============================================================ */
+
+.brands h2 em {
+  color: var(--color-magenta-hot);
+  font-style: normal;
+}
+
+/* ============================================================
+   ContentReels — em color for "contenido"
+   ============================================================ */
+
+.videos-title em {
+  color: var(--color-lime);
+  font-style: normal;
 }

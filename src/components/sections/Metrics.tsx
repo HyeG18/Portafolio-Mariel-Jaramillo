@@ -76,9 +76,11 @@ export default function Metrics() {
       />
       <div className="max-w-4xl mx-auto relative z-10">
         <h2
-          className="text-3xl md:text-4xl font-bold text-center mb-2"
-          style={{ fontFamily: 'var(--font-family-serif)', color: 'var(--color-magenta-dark)' }}
-          dangerouslySetInnerHTML={{ __html: t('metrics.title' as any) }}
+          className="text-4xl md:text-5xl font-bold text-center mb-4"
+          style={{ fontFamily: 'var(--font-family-body)', color: 'var(--color-magenta-dark)' }}
+          dangerouslySetInnerHTML={{
+            __html: '¡Conoce a mi <em style="color:var(--color-magenta-hot);font-style:normal">audiencia!</em>'
+          }}
         />
         <p
           className="text-center mb-12 mx-auto"

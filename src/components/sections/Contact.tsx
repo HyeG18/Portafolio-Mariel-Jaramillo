@@ -39,9 +39,14 @@ export default function Contact() {
           </div>
           <div className="contact__info reveal">
             <h2
-              className="text-3xl md:text-4xl font-bold mb-4"
-              style={{ fontFamily: 'var(--font-family-serif)', color: '#fff' }}
-              dangerouslySetInnerHTML={{ __html: t('contact.title' as any) }}
+              className="text-4xl md:text-5xl font-bold mb-4"
+              style={{ fontFamily: 'var(--font-family-body)', color: '#fff', lineHeight: 1.3 }}
+              dangerouslySetInnerHTML={{
+                __html: (t('contact.title' as any) as string).replace(
+                  '<span>',
+                  '<span style="background-color:var(--color-lime);color:var(--color-magenta-dark);padding:0em 0.15em;">'
+                )
+              }}
             />
             <p className="contact__subtitle mb-8 font-bold" style={{ color: 'var(--color-magenta-dark)', fontSize: '1.6rem' }}>
               {t('contact.subtitle' as any)}
@@ -50,7 +55,7 @@ export default function Contact() {
               className="contact__card flex flex-col"
               style={{
                 transform: 'rotate(-1deg)',
-                backgroundColor: 'var(--paper)',
+                backgroundColor: 'var(--color-paper)',
                 boxShadow: 'var(--shadow-card)',
                 borderRadius: '1rem',
                 padding: '1.5rem',

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useI18n } from '../../hooks/useI18n';
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll';
 import { assetUrl } from '../../utils/assetUrl';
@@ -31,20 +31,14 @@ export default function ContentReels() {
   const { t } = useI18n();
   const ref = useRef<HTMLElement>(null);
   useRevealOnScroll(ref);
+  const [activeNiche, setActiveNiche] = useState<Niche>('food');
 
-  const [loadedReels, setLoadedReels] = useState<Record<Niche, Set<string>>>({
-    food: new Set(),
-    beauty: new Set(),
-    lifestyle: new Set(),
-    pets: new Set(),
-  });
-
-  const handleReelClick = (niche: Niche, url: string) => {
-    setLoadedReels((prev) => ({
-      ...prev,
-      [niche]: new Set([...prev[niche], url]),
-    }));
-  };
+  useEffect(() => {
+    const instgrm = (window as unknown as { instgrm?: { Embeds: { process: () => void } } }).instgrm;
+    if (instgrm) {
+      instgrm.Embeds.process();
+    }
+  }, [activeNiche]);
 
   return (
     <section
@@ -55,9 +49,11 @@ export default function ContentReels() {
     >
       <div className="max-w-5xl mx-auto">
         <h2
-          className="text-3xl md:text-4xl font-bold text-center mb-12"
-          style={{ fontFamily: 'var(--font-family-serif)', color: 'var(--color-pink-light)' }}
-          dangerouslySetInnerHTML={{ __html: t('videos.title' as any) }}
+          className="videos-title text-3xl md:text-4xl font-bold text-center mb-12"
+          style={{ fontFamily: 'var(--font-family-body)', color: 'var(--color-pink-light)' }}
+          dangerouslySetInnerHTML={{
+            __html: 'Mis formas de <em>contenido</em>'
+          }}
         />
 
         <div className="flex justify-center gap-4 flex-wrap mb-12">
@@ -77,62 +73,60 @@ export default function ContentReels() {
           ))}
         </div>
 
-        <div className="flex flex-col gap-16 max-w-[1100px] mx-auto">
-          {NICHE_ORDER.map((niche) => {
-            const reels = REELS[niche];
-            const isSingle = reels.length === 1;
-            return (
-              <article key={niche} className="niche text-center">
-                <h3
-                  className="niche-title text-xl md:text-2xl font-bold mb-6"
-                  style={{ fontFamily: 'var(--font-family-serif)', color: 'white' }}
-                  dangerouslySetInnerHTML={{ __html: t(`videos.niche.${niche}` as any) }}
-                />
-                <div className="grid grid-cols-2 gap-20 max-w-[600px] mx-auto">
-                  {reels.map(({ url, thumb, alt }) => (
-                    <div
-                      key={url}
-                      className={`reel relative aspect-[9/16] overflow-hidden cursor-pointer mx-auto ${isSingle ? 'col-span-2' : ''}`}
-                      style={{
-                        borderRadius: 'var(--radius-lg)',
-                        border: '3px solid var(--color-pink)',
-                        backgroundColor: 'var(--color-ink)',
-                        maxWidth: isSingle ? '320px' : '280px',
-                      }}
-                      onClick={() => handleReelClick(niche, url)}
-                      role="button"
-                      tabIndex={0}
-                      aria-label={t('videos.watch' as any)}
-                      onKeyDown={(e) => e.key === 'Enter' && handleReelClick(niche, url)}
-                    >
-                      {loadedReels[niche].has(url) ? (
-                        <iframe
-                          src={`${url}embed/captioned/`}
-                          className="absolute inset-0 w-full h-full"
-                          allow="encrypted-media; clipboard-write"
-                          allowFullScreen
-                          loading="lazy"
-                          title={alt}
-                        />
-                      ) : (
-                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                          <img
-                            src={assetUrl(`assets/images/${thumb}`)}
-                            alt={alt}
-                            className="w-16 h-16 rounded-full object-cover"
-                            loading="lazy"
-                          />
-                          <span className="text-white text-sm font-medium text-center px-4">
-                            {t('videos.watch' as any)}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  ))}
+        <div className="flex justify-center gap-3 flex-wrap mb-12">
+          {NICHE_ORDER.map((niche) => (
+            <button
+              key={niche}
+              onClick={() => setActiveNiche(niche)}
+              className="font-bold text-sm transition-all duration-200"
+              style={{
+                backgroundColor: activeNiche === niche ? 'var(--color-pink-light)' : 'transparent',
+                color: activeNiche === niche ? 'var(--color-magenta-dark)' : 'var(--color-pink-light)',
+                border: `2px solid ${activeNiche === niche ? 'var(--color-pink-light)' : 'var(--color-pink)'}`,
+                padding: '0.5rem 1.4rem',
+                borderRadius: '999px',
+                cursor: 'pointer',
+              }}
+            >
+              {t(`videos.niche.${niche}` as any).replace(/&amp;/g, '&').replace(/<[^>]*>/g, '')}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-2 gap-6 max-w-[600px] mx-auto">
+          {REELS[activeNiche].map(({ url, thumb, alt }) => (
+            <div
+              key={url}
+              className="relative overflow-hidden cursor-pointer group"
+              style={{
+                borderRadius: '1rem',
+                border: '3px solid var(--color-pink)',
+                aspectRatio: '9/16',
+              }}
+              onClick={() => window.open(url, '_blank', 'noopener,noreferrer')}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && window.open(url, '_blank', 'noopener,noreferrer')}
+              aria-label={t('videos.watch' as any)}
+            >
+              <img
+                src={assetUrl(`assets/images/${thumb}`)}
+                alt={alt}
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#c13584" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="5,3 19,12 5,21" fill="#c13584" stroke="none" />
+                  </svg>
                 </div>
-              </article>
-            );
-          })}
+                <span className="text-white text-xs font-semibold text-center px-2">
+                  {t('videos.watch' as any)}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

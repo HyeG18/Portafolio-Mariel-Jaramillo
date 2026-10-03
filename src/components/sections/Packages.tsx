@@ -39,19 +39,21 @@ export default function Packages() {
     >
       <div className="max-w-5xl mx-auto text-center">
         <h2
-          className="text-3xl md:text-4xl font-bold mb-2"
-          style={{ fontFamily: 'var(--font-family-serif)', color: 'var(--color-ink)' }}
-          dangerouslySetInnerHTML={{ __html: t('packages.title' as any) }}
+          className="text-4xl md:text-5xl font-bold mb-4"
+          style={{ fontFamily: 'var(--font-family-body)', color: 'var(--color-magenta-dark)' }}
+          dangerouslySetInnerHTML={{
+            __html: 'Mis paquetes de <em style="color:var(--color-magenta-hot);font-style:normal;font-weight:inherit">contenido</em>'
+          }}
         />
-        <p className="mb-12" style={{ color: 'var(--color-magenta)' }}>
+        <p className="mb-12 text-xl font-bold" style={{ fontFamily: 'var(--font-family-body)', color: 'var(--color-magenta-hot)' }}>
           {t('packages.subtitle' as any)}
         </p>
 
-        <div className="grid md:grid-cols-3 gap-6 items-start">
+        <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {PACKAGES.map(({ nameKey, features, priceKey, noteKey, popular }) => (
             <div
               key={nameKey}
-              className="package-card relative rounded-3xl p-6 text-left transition-transform duration-300 hover:-translate-y-1.5"
+              className="package-card relative rounded-3xl p-6 text-left transition-transform duration-300 hover:-translate-y-1.5 flex flex-col h-full"
               data-popular={popular}
               style={{
                 border: `3px solid ${popular ? 'var(--color-magenta-dark)' : 'var(--color-pink)'}`,
@@ -73,7 +75,7 @@ export default function Packages() {
                 dangerouslySetInnerHTML={{ __html: t(nameKey as any) }}
               />
 
-              <ul className="space-y-2 mb-6">
+              <ul className="space-y-2 mb-6 flex-1">
                 {features.map((fKey) => (
                   <li key={fKey} className="flex items-start gap-2 text-sm">
                     <span

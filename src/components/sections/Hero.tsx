@@ -6,14 +6,15 @@ export default function Hero() {
 
   return (
     <section
+      id="inicio"
       className="min-h-screen flex items-center justify-center px-4 pt-20"
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(254,228,236,0.7), rgba(254,228,236,0.4)), url('${assetUrl('assets/images/texture-pink.webp')}')`,
+        backgroundImage: `linear-gradient(rgba(232,115,168,0.55), rgba(232,115,168,0.55)), url('${assetUrl('assets/images/texture-pink.webp')}')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
-      <div className="max-w-6xl w-full flex flex-col md:flex-row md:items-center md:justify-center gap-10 md:gap-[10rem]">
+      <div className="max-w-6xl w-full flex flex-col md:flex-row md:items-center md:justify-center gap-10 md:gap-40">
 
         {/* Left: Photo + decorations */}
         <div className="flex flex-col items-center relative" style={{ width: 'min(320px, 35vw)' }}>
@@ -94,7 +95,7 @@ export default function Hero() {
         <div className="flex flex-col gap-6 text-center md:text-left md:max-w-md">
           {/* Kicker */}
           <span
-            className="inline-block text-xs font-bold tracking-[0.35em] uppercase self-start"
+            className="inline-block text-sm font-bold tracking-[0.35em] uppercase self-start"
             style={{ color: 'var(--color-magenta-dark)' }}
           >
             {t('hero.kicker' as any)}
@@ -109,18 +110,18 @@ export default function Hero() {
 
           {/* Tagline lines */}
           <div className="space-y-2">
-            <p className="text-2xl font-bold" style={{ color: 'var(--color-magenta-dark)' }}>
+            <p className="text-3xl font-bold" style={{ color: 'var(--color-magenta-dark)' }}>
               {t('hero.tagline1' as any)}
             </p>
             <p>
               <em
-                className="not-italic inline-block px-2 py-0.5 font-bold text-xl md:text-2xl"
+                className="not-italic inline-block px-8 py-3 font-bold text-2xl md:text-3xl text-center"
                 style={{ backgroundColor: 'var(--color-magenta-dark)', color: 'var(--color-pink-light)' }}
               >
                 {t('hero.tagline2' as any)}
               </em>
             </p>
-            <p className="text-xl font-bold" style={{ color: 'var(--color-ink)' }}>
+            <p className="text-2xl font-bold" style={{ color: 'var(--color-ink)' }}>
               {t('hero.tagline3' as any)}
             </p>
           </div>
@@ -131,7 +132,7 @@ export default function Hero() {
             alt=""
             aria-hidden="true"
             loading="eager"
-            className="w-[70px] self-center md:self-start"
+            className="w-[70px] self-center"
             style={{ filter: 'drop-shadow(0 6px 12px rgba(61,10,36,0.3))' }}
           />
 
@@ -139,14 +140,13 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <a
               href="#contacto"
-              className="px-6 py-3 rounded-full font-semibold text-white transition-transform hover:scale-105 text-center"
-              style={{ backgroundColor: 'var(--color-magenta-dark)' }}
+              className="hero-cta-primary rounded-full font-semibold text-white transition-transform hover:scale-105 text-center"
             >
               {t('hero.cta' as any)}
             </a>
             <a
               href="#contenido"
-              className="hero-cta-ghost px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105 text-center"
+              className="hero-cta-ghost rounded-full font-semibold transition-transform hover:scale-105 text-center"
             >
               {t('hero.cta2' as any)}
             </a>

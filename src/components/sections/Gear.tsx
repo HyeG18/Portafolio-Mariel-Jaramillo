@@ -22,7 +22,7 @@ export default function Gear() {
       id="equipo"
       ref={ref}
       className="reveal py-20 px-4"
-      style={{ backgroundColor: 'var(--cream)' }}
+      style={{ backgroundColor: 'var(--color-cream)' }}
     >
       <div className="max-w-5xl mx-auto text-center">
         <h2

@@ -12,15 +12,15 @@ export default function AboutMe() {
     <section
       id="sobre-mi"
       ref={ref}
-      className="reveal py-20 px-4"
-      style={{ backgroundColor: 'var(--lime)' }}
+      className="reveal py-24 px-4"
+      style={{ backgroundColor: 'var(--color-lime)' }}
     >
       <div className="max-w-5xl mx-auto">
         <div className="grid min-[860px]:grid-cols-[1fr_1.4fr] gap-12 items-center">
           {/* Phone-frame photo */}
           <div className="flex justify-center">
             <div
-              className="relative w-56 h-96 rounded-[3rem] overflow-hidden"
+              className="relative w-72 h-[32rem] rounded-[3rem] overflow-hidden"
               style={{
                 border: '6px solid var(--color-ink)',
                 boxShadow: 'var(--shadow-card)',
@@ -54,18 +54,22 @@ export default function AboutMe() {
           <div>
             <h2
               className="text-3xl lg:text-4xl font-bold mb-4"
-              style={{ fontFamily: 'var(--font-family-serif)', color: 'var(--color-ink)' }}
-              dangerouslySetInnerHTML={{ __html: t('about.title' as any) }}
+              style={{ fontFamily: 'var(--font-family-body)', color: 'var(--color-magenta-dark)' }}
+              dangerouslySetInnerHTML={{
+                __html: (t('about.title' as any) as string).replace(
+                  'Soy Mariel',
+                  '<span style="color:var(--color-magenta-hot)">Soy Mariel</span>'
+                )
+              }}
             />
             <p
-              className="text-lg font-medium mb-4"
+              className="text-lg font-bold mb-4"
               style={{ color: 'var(--color-magenta-dark)' }}
             >
               {t('about.lead' as any)}
             </p>
-            <p className="mb-3" style={{ color: 'var(--color-ink)' }} dangerouslySetInnerHTML={{ __html: t('about.p1' as any) }} />
-            <p className="mb-3" style={{ color: 'var(--color-ink)' }} dangerouslySetInnerHTML={{ __html: t('about.p2' as any) }} />
-            <p className="mb-6" style={{ color: 'var(--color-ink)' }} dangerouslySetInnerHTML={{ __html: t('about.p3' as any) }} />
+            <p className="mb-3" style={{ fontFamily: 'var(--font-family-body)', color: 'var(--color-magenta-dark)' }} dangerouslySetInnerHTML={{ __html: t('about.p1' as any) }} />
+            <p className="mb-3" style={{ fontFamily: 'var(--font-family-body)', color: 'var(--color-magenta-dark)' }} dangerouslySetInnerHTML={{ __html: t('about.p3' as any) }} />
           </div>
         </div>
       </div>
