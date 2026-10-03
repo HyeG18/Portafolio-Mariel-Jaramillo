@@ -16,15 +16,15 @@ export default function App() {
     <I18nProvider>
       <Nav />
       <main>
-        <section id="inicio"><Hero /></section>
-        <section id="sobre-mi"><AboutMe /></section>
-        <section id="habilidades"><Skills /></section>
-        <section id="contenido"><ContentReels /></section>
-        <section id="equipo"><Gear /></section>
-        <section id="marcas"><Brands /></section>
-        <section id="audiencia"><Metrics /></section>
-        <section id="paquetes"><Packages /></section>
-        <section id="contacto"><Contact /></section>
+        <Hero />
+        <AboutMe />
+        <Skills />
+        <ContentReels />
+        <Gear />
+        <Brands />
+        <Metrics />
+        <Packages />
+        <Contact />
       </main>
       <Footer />
     </I18nProvider>
