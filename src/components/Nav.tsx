@@ -31,13 +31,14 @@ export default function Nav() {
       }`}
       style={{ backgroundColor: 'rgba(254,239,244,0.85)', backdropFilter: 'blur(12px)' }}
     >
-      <nav className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <nav className="w-full flex items-center justify-between" style={{ padding: '0.9rem 1.5rem' }}>
         <a
           href="#inicio"
           className="font-bold text-lg"
+          style={{ color: 'var(--color-magenta-dark)' }}
           aria-label="Mariel Jaramillo — Inicio"
         >
-          UGC <em style={{ color: 'var(--color-magenta-hot)' }}>Mariel</em>
+          UGC <em style={{ color: 'var(--color-magenta-hot)', fontStyle: 'normal' }}>Mariel</em>
         </a>
 
         <ul
@@ -59,18 +60,36 @@ export default function Nav() {
         </ul>
 
         <div className="flex items-center gap-3">
-          <div className="nav__lang flex gap-2">
+          <div
+            className="nav__lang flex items-center gap-1"
+            style={{
+              border: '2px solid var(--color-magenta-dark)',
+              borderRadius: '999px',
+              padding: '0.3rem 0.7rem',
+            }}
+          >
             <button
               onClick={() => setLang('es')}
               aria-label="Cambiar a español"
-              style={{ opacity: lang === 'es' ? 1 : 0.45 }}
+              style={{
+                opacity: lang === 'es' ? 1 : 0.45,
+                color: 'var(--color-magenta-dark)',
+                fontWeight: 700,
+                fontSize: '0.8rem',
+              }}
             >
               ES
             </button>
+            <span style={{ color: 'var(--color-magenta-dark)', opacity: 0.6, fontSize: '0.8rem' }}>|</span>
             <button
               onClick={() => setLang('en')}
               aria-label="Change to English"
-              style={{ opacity: lang === 'en' ? 1 : 0.45 }}
+              style={{
+                opacity: lang === 'en' ? 1 : 0.45,
+                color: 'var(--color-magenta-dark)',
+                fontWeight: 700,
+                fontSize: '0.8rem',
+              }}
             >
               EN
             </button>
@@ -86,21 +105,21 @@ export default function Nav() {
             <span
               className="block w-6 h-0.5 transition-transform duration-300"
               style={{
-                backgroundColor: 'var(--color-ink)',
+                backgroundColor: 'var(--color-magenta-dark)',
                 transform: menuOpen ? 'translateY(8px) rotate(45deg)' : 'none',
               }}
             />
             <span
               className="block w-6 h-0.5 transition-opacity duration-300"
               style={{
-                backgroundColor: 'var(--color-ink)',
+                backgroundColor: 'var(--color-magenta-dark)',
                 opacity: menuOpen ? 0 : 1,
               }}
             />
             <span
               className="block w-6 h-0.5 transition-transform duration-300"
               style={{
-                backgroundColor: 'var(--color-ink)',
+                backgroundColor: 'var(--color-magenta-dark)',
                 transform: menuOpen ? 'translateY(-8px) rotate(-45deg)' : 'none',
               }}
             />
