@@ -37,28 +37,38 @@ export default function Gear() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {GEAR_ITEMS.map(({ key, img }) => (
-            <figure key={key} className="text-center">
-              <div
-                className="rounded-2xl overflow-hidden mb-3 aspect-square"
-                style={{ backgroundColor: 'var(--color-pink-light)' }}
-              >
+            <figure
+              key={key}
+              className="text-center transition-transform duration-300"
+              style={{
+                backgroundColor: 'white',
+                borderRadius: 'var(--radius-lg)',
+                padding: '1.4rem 1rem 1.1rem',
+                boxShadow: '0 6px 18px rgba(61,10,36,0.08)',
+                transform: 'translateY(0) rotate(0deg)',
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.transform = 'translateY(-6px) rotate(-1deg)';
+                el.style.boxShadow = 'var(--shadow-card)';
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.transform = 'translateY(0) rotate(0deg)';
+                el.style.boxShadow = '0 6px 18px rgba(61,10,36,0.08)';
+              }}
+            >
+              <div className="mb-3 flex items-center justify-center" style={{ height: '130px' }}>
                 <img
                   src={assetUrl('assets/images/' + img)}
                   alt={t(key as any)}
-                  className="w-full h-full object-cover transition-transform duration-300"
+                  style={{ height: '130px', width: 'auto', objectFit: 'contain', margin: '0 auto' }}
                   loading="lazy"
-                  style={{ transform: 'translateY(0) rotate(0deg)' }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = 'translateY(-6px) rotate(-1deg)';
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = 'translateY(0) rotate(0deg)';
-                  }}
                 />
               </div>
               <figcaption
-                className="text-sm font-medium"
-                style={{ color: 'var(--color-ink)' }}
+                className="text-sm font-bold uppercase tracking-wide"
+                style={{ color: 'var(--color-magenta-dark)' }}
               >
                 {t(key as any)}
               </figcaption>
